@@ -1,12 +1,24 @@
-import { Metadata } from "next";
-import { ComparisonTool } from "@/components/compare/ComparisonTool";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Compare Engineering Colleges | Side-by-Side Comparison",
-  description:
-    "Compare multiple engineering colleges side-by-side. Compare rankings, placements, cutoffs, infrastructure, fees, and more. Get AI-powered insights.",
-};
+import { ComparisonTool } from "@/components/compare/ComparisonTool";
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
+
+function CompareContent() {
+  const searchParams = useSearchParams();
+  const collegeIds = searchParams.get("colleges")?.split(",").filter(Boolean) || [];
+  
+  return <ComparisonTool initialCollegeIds={collegeIds} />;
+}
 
 export default function ComparePage() {
-  return <ComparisonTool />;
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
+        <div className="text-white text-lg">Loading comparison...</div>
+      </div>
+    }>
+      <CompareContent />
+    </Suspense>
+  );
 }

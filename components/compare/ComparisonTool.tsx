@@ -7,7 +7,11 @@ import { formatCurrency, formatNumber, generateShareToken } from "@/lib/utils";
 import { generateAIResponse, getContextualData } from "@/lib/openrouter";
 import toast from "react-hot-toast";
 
-export function ComparisonTool() {
+interface ComparisonToolProps {
+  initialCollegeIds?: string[];
+}
+
+export function ComparisonTool({ initialCollegeIds = [] }: ComparisonToolProps) {
   const [selectedColleges, setSelectedColleges] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<any[]>([]);
@@ -18,6 +22,25 @@ export function ComparisonTool() {
   const [loading, setLoading] = useState(false);
   const [aiInsight, setAiInsight] = useState<string | null>(null);
   const [loadingInsight, setLoadingInsight] = useState(false);
+
+  // Load initial colleges from URL params
+  useEffect(() => {
+    const loadInitialColleges = async () => {
+      if (initialCollegeIds.length > 0) {
+        const supabase = createSupabaseClient();
+        const { data } = await supabase
+          .from("colleges")
+          .select("id, name, slug, city, state, college_type")
+          .in("id", initialCollegeIds);
+        
+        if (data) {
+          setSelectedColleges(data);
+        }
+      }
+    };
+    
+    loadInitialColleges();
+  }, [initialCollegeIds]);
 
   useEffect(() => {
     if (selectedColleges.length >= 2) {
