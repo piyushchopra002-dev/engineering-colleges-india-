@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { GraduationCap, Heart, Github, Twitter, Linkedin } from "lucide-react";
+import { GraduationCap, Heart, Github, Linkedin } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -33,28 +33,21 @@ export function Footer() {
                 href="https://www.linkedin.com/in/piyush-chopra-44a093371" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="p-2 bg-white/5 hover:bg-primary-500/20 rounded-lg transition-all hover:scale-110"
+                className="p-2 bg-white/5 hover:bg-primary-500/20 rounded-lg transition-all hover:scale-110 cursor-pointer"
                 title="Connect on LinkedIn"
+                aria-label="Connect on LinkedIn"
               >
-                <Linkedin className="h-4 w-4" />
+                <Linkedin className="h-5 w-5" />
               </a>
               <a 
                 href="https://github.com/piyushchopra002-dev" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="p-2 bg-white/5 hover:bg-primary-500/20 rounded-lg transition-all hover:scale-110"
+                className="p-2 bg-white/5 hover:bg-primary-500/20 rounded-lg transition-all hover:scale-110 cursor-pointer"
                 title="View on GitHub"
+                aria-label="View on GitHub"
               >
-                <Github className="h-4 w-4" />
-              </a>
-              <a 
-                href="https://twitter.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="p-2 bg-white/5 hover:bg-primary-500/20 rounded-lg transition-all hover:scale-110"
-                title="Follow on Twitter"
-              >
-                <Twitter className="h-4 w-4" />
+                <Github className="h-5 w-5" />
               </a>
             </div>
           </div>
