@@ -29,14 +29,32 @@ export function Footer() {
               rankings, placements, cutoffs, and more.
             </p>
             <div className="flex gap-3">
-              <a href="#" className="p-2 bg-white/5 hover:bg-primary-500/20 rounded-lg transition-all hover:scale-110">
-                <Twitter className="h-4 w-4" />
-              </a>
-              <a href="#" className="p-2 bg-white/5 hover:bg-primary-500/20 rounded-lg transition-all hover:scale-110">
+              <a 
+                href="https://www.linkedin.com/in/piyush-chopra-44a093371" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-2 bg-white/5 hover:bg-primary-500/20 rounded-lg transition-all hover:scale-110"
+                title="Connect on LinkedIn"
+              >
                 <Linkedin className="h-4 w-4" />
               </a>
-              <a href="#" className="p-2 bg-white/5 hover:bg-primary-500/20 rounded-lg transition-all hover:scale-110">
+              <a 
+                href="https://github.com/piyushchopra002-dev" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-2 bg-white/5 hover:bg-primary-500/20 rounded-lg transition-all hover:scale-110"
+                title="View on GitHub"
+              >
                 <Github className="h-4 w-4" />
+              </a>
+              <a 
+                href="https://twitter.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-2 bg-white/5 hover:bg-primary-500/20 rounded-lg transition-all hover:scale-110"
+                title="Follow on Twitter"
+              >
+                <Twitter className="h-4 w-4" />
               </a>
             </div>
           </div>
