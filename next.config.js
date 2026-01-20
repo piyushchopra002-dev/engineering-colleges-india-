@@ -103,7 +103,17 @@ const nextConfig = {
           },
           {
             key: "Cache-Control",
-            value: "public, s-maxage=86400, stale-while-revalidate=43200",
+            value: "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400",
+          },
+        ],
+      },
+      {
+        // Force fresh data for college pages
+        source: "/colleges/:slug",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=0, s-maxage=0, must-revalidate",
           },
         ],
       },
