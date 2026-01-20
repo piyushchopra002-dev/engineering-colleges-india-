@@ -65,8 +65,8 @@ git --version
 (or any name you prefer, use lowercase and hyphens)
 
 **Description:** (optional)
-`Website for comparing engineering colleges in India with placements, cutoffs, and rankings`
-
+``
+Website for comparing engineering colleges in India with placements, cutoffs, and rankings
 **Visibility:**
 - ✅ **Public** (recommended - can showcase in portfolio)
 - OR **Private** (only you can see)

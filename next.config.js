@@ -70,6 +70,16 @@ const nextConfig = {
       bodySizeLimit: "10mb",
     },
   },
+  // Programmatic SEO: ISR Configuration
+  async rewrites() {
+    return [
+      // No rewrites needed, using Next.js dynamic routes
+    ];
+  },
+  // Enable static optimization for programmatic pages
+  output: "standalone",
+  // Configure page extensions
+  pageExtensions: ["tsx", "ts", "jsx", "js"],
   async headers() {
     return [
       {
@@ -90,6 +100,47 @@ const nextConfig = {
           {
             key: "Referrer-Policy",
             value: "origin-when-cross-origin",
+          },
+          {
+            key: "Cache-Control",
+            value: "public, s-maxage=86400, stale-while-revalidate=43200",
+          },
+        ],
+      },
+      {
+        // Cache programmatic SEO pages for 24 hours
+        source: "/colleges/city/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, s-maxage=86400, stale-while-revalidate=43200",
+          },
+        ],
+      },
+      {
+        source: "/compare/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, s-maxage=86400, stale-while-revalidate=43200",
+          },
+        ],
+      },
+      {
+        source: "/rankings/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, s-maxage=86400, stale-while-revalidate=43200",
+          },
+        ],
+      },
+      {
+        source: "/cutoffs/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, s-maxage=86400, stale-while-revalidate=43200",
           },
         ],
       },
