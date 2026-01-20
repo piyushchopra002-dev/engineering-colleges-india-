@@ -4,7 +4,9 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { CollegeDetail } from "@/components/colleges/CollegeDetail";
 import { generateCollegeStructuredData, generateBreadcrumbStructuredData } from "@/lib/seo";
 
-// Revalidate every hour to show fresh data
+// Force dynamic rendering to show fresh data immediately
+export const dynamic = 'force-dynamic';
+// Revalidate every hour after initial render
 export const revalidate = 3600;
 
 interface PageProps {
