@@ -2,7 +2,7 @@
 
 import { College, Ranking, Achievement, Media, Event } from "@/types";
 import Image from "next/image";
-import { MapPin, Globe, Mail, Phone, Calendar, Award, Building2, Shield, TrendingUp } from "lucide-react";
+import { MapPin, Globe, Mail, Phone, Calendar, Award, Building2, Shield, TrendingUp, Instagram, Linkedin, Facebook, Twitter, Youtube } from "lucide-react";
 import { formatCurrency, formatNumber } from "@/lib/utils";
 import { RankingsSection } from "./RankingsSection";
 import { InfrastructureSection } from "./InfrastructureSection";
@@ -330,6 +330,76 @@ export function CollegeDetail({
                       Affiliation
                     </div>
                     <div className="text-gray-700 leading-relaxed">{college.affiliation}</div>
+                  </div>
+                )}
+                {/* Social Media Links */}
+                {(college.instagram_url || college.linkedin_url || college.facebook_url || college.twitter_url || college.youtube_url) && (
+                  <div className="pt-4 border-t border-gray-100">
+                    <div className="text-sm font-semibold text-gray-700 mb-3">
+                      Connect With Us
+                    </div>
+                    <div className="flex flex-wrap gap-3">
+                      {college.instagram_url && (
+                        <a
+                          href={college.instagram_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-3 py-2 bg-gradient-to-br from-purple-500 to-pink-500 text-white rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
+                          title="Follow on Instagram"
+                        >
+                          <Instagram className="h-4 w-4" />
+                          <span className="text-sm font-medium">Instagram</span>
+                        </a>
+                      )}
+                      {college.linkedin_url && (
+                        <a
+                          href={college.linkedin_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
+                          title="Connect on LinkedIn"
+                        >
+                          <Linkedin className="h-4 w-4" />
+                          <span className="text-sm font-medium">LinkedIn</span>
+                        </a>
+                      )}
+                      {college.facebook_url && (
+                        <a
+                          href={college.facebook_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-3 py-2 bg-blue-500 text-white rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
+                          title="Like on Facebook"
+                        >
+                          <Facebook className="h-4 w-4" />
+                          <span className="text-sm font-medium">Facebook</span>
+                        </a>
+                      )}
+                      {college.twitter_url && (
+                        <a
+                          href={college.twitter_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-3 py-2 bg-black text-white rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
+                          title="Follow on Twitter"
+                        >
+                          <Twitter className="h-4 w-4" />
+                          <span className="text-sm font-medium">Twitter</span>
+                        </a>
+                      )}
+                      {college.youtube_url && (
+                        <a
+                          href={college.youtube_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-3 py-2 bg-red-600 text-white rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
+                          title="Subscribe on YouTube"
+                        >
+                          <Youtube className="h-4 w-4" />
+                          <span className="text-sm font-medium">YouTube</span>
+                        </a>
+                      )}
+                    </div>
                   </div>
                 )}
               </div>

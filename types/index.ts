@@ -22,6 +22,11 @@ export interface College {
   jurisdiction?: "Central" | "State" | "UT";
   logo_url?: string;
   cover_image_url?: string;
+  instagram_url?: string;
+  linkedin_url?: string;
+  facebook_url?: string;
+  twitter_url?: string;
+  youtube_url?: string;
   male_female_ratio?: {
     male: number;
     female: number;
