@@ -4,6 +4,9 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { CollegeDetail } from "@/components/colleges/CollegeDetail";
 import { generateCollegeStructuredData, generateBreadcrumbStructuredData } from "@/lib/seo";
 
+// Revalidate every hour to show fresh data
+export const revalidate = 3600;
+
 interface PageProps {
   params: {
     slug: string;
