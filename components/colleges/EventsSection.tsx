@@ -7,13 +7,16 @@ interface EventsSectionProps {
 }
 
 export function EventsSection({ events }: EventsSectionProps) {
+  // Debug log
+  console.log('EventsSection received events:', events?.length || 0);
+  
   return (
     <section className="bg-white rounded-lg shadow-md p-6">
       <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
         <Calendar className="h-6 w-6 mr-2 text-primary-600" />
         Events & Campus Life
       </h2>
-      {events.length === 0 ? (
+      {!events || events.length === 0 ? (
         <div className="text-center py-8 text-slate-600">
           No events data available yet
         </div>
