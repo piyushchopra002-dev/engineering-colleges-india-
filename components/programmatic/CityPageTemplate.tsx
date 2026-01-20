@@ -257,30 +257,28 @@ export function CityPageTemplate({
 
                       {/* Stats */}
                       <div className="space-y-2 text-sm">
-                        {placement?.average_salary && (
-                          <div className="flex justify-between">
-                            <span className="text-gray-600">Avg Package:</span>
-                            <span className="font-semibold">
-                              ₹{(placement.average_salary / 100000).toFixed(1)} LPA
-                            </span>
-                          </div>
-                        )}
-                        {cutoff?.closing_rank && (
-                          <div className="flex justify-between">
-                            <span className="text-gray-600">Cutoff Rank:</span>
-                            <span className="font-semibold">
-                              {cutoff.closing_rank.toLocaleString()}
-                            </span>
-                          </div>
-                        )}
-                        {college.established_year && (
-                          <div className="flex justify-between">
-                            <span className="text-gray-600">Established:</span>
-                            <span className="font-semibold">
-                              {college.established_year}
-                            </span>
-                          </div>
-                        )}
+                        <div className="flex justify-between">
+                          <span className="text-gray-600">Avg Package:</span>
+                          <span className="font-semibold">
+                            {placement?.average_salary
+                              ? `₹${(placement.average_salary / 100000).toFixed(1)} LPA`
+                              : "N/A"}
+                          </span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-gray-600">Cutoff Rank:</span>
+                          <span className="font-semibold">
+                            {cutoff?.closing_rank
+                              ? cutoff.closing_rank.toLocaleString()
+                              : "N/A"}
+                          </span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-gray-600">Established:</span>
+                          <span className="font-semibold">
+                            {college.established_year || "N/A"}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
