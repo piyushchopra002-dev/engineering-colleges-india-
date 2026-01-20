@@ -16,12 +16,11 @@ export function FacultySection({ faculty, collegeSlug }: FacultySectionProps) {
           <User className="h-6 w-6 mr-2 text-primary-600" />
           Faculty
         </h2>
-        <Link
-          href={`/colleges/${collegeSlug}/faculty`}
-          className="text-primary-600 hover:underline text-sm font-medium"
-        >
-          View All Faculty
-        </Link>
+        {faculty.length >= 10 && (
+          <span className="text-sm text-gray-500">
+            Showing top {faculty.length} faculty members
+          </span>
+        )}
       </div>
       {faculty.length === 0 ? (
         <div className="text-center py-8 text-slate-600">
