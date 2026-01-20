@@ -114,22 +114,24 @@ export default async function CityPage({ params }: PageProps) {
     notFound();
   }
 
-  // Get placement stats for colleges
+  // Get placement stats for colleges (get latest available year)
   const collegeIds = colleges.map((c) => c.id);
   const { data: placementStats } = await supabase
     .from("placement_stats")
     .select("college_id, year, average_salary, highest_salary, placement_percentage")
     .in("college_id", collegeIds)
-    .eq("year", 2024)
+    .gte("year", 2021)
+    .order("year", { ascending: false })
     .order("average_salary", { ascending: false });
 
-  // Get cutoff data
+  // Get cutoff data (get latest available year)
   const { data: cutoffs } = await supabase
     .from("cutoffs")
     .select("college_id, closing_rank, category")
     .in("college_id", collegeIds)
-    .eq("year", 2024)
+    .gte("year", 2021)
     .eq("category", "General")
+    .order("year", { ascending: false })
     .order("closing_rank", { ascending: true });
 
   // Calculate stats
