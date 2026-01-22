@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getBlogBySlug, getAllBlogs, blogCategories, generateBlogSchema } from "@/lib/blog-data";
 import { Calendar, Clock, User, Home, ChevronRight, ArrowRight } from "lucide-react";
-import ReactMarkdown from "react-markdown";
+import { BlogContent } from "@/components/blog/BlogContent";
 
 interface BlogPostPageProps {
   params: {
@@ -119,19 +119,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
 
           {/* Content */}
-          <div className="prose prose-slate max-w-none
-            prose-headings:font-bold prose-headings:text-slate-900
-            prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4
-            prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3
-            prose-p:text-slate-700 prose-p:leading-relaxed prose-p:mb-4
-            prose-ul:my-4 prose-ul:list-disc prose-ul:pl-6
-            prose-li:text-slate-700 prose-li:mb-2
-            prose-strong:text-slate-900 prose-strong:font-semibold
-            prose-blockquote:border-l-4 prose-blockquote:border-primary-500
-            prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-slate-600
-          ">
-            <ReactMarkdown>{post.content}</ReactMarkdown>
-          </div>
+          <BlogContent content={post.content} />
 
           {/* Tags */}
           <div className="mt-8 pt-6 border-t border-slate-200">
