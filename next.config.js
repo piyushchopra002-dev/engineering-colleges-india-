@@ -88,8 +88,6 @@ const nextConfig = {
       // No rewrites needed, using Next.js dynamic routes
     ];
   },
-  // Enable static optimization for programmatic pages
-  output: "standalone",
   // Configure page extensions
   pageExtensions: ["tsx", "ts", "jsx", "js"],
   async headers() {
