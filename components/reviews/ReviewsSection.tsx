@@ -26,22 +26,31 @@ export function ReviewsSection({ collegeId, collegeName }: ReviewsSectionProps) 
   }, [collegeId]);
 
   async function fetchReviews() {
-    const supabase = createSupabaseClient();
-    
-    const { data, error } = await supabase
-      .from("reviews")
-      .select("*, branches(name)")
-      .eq("college_id", collegeId)
-      .eq("is_approved", true)
-      .order("is_featured", { ascending: false })
-      .order("created_at", { ascending: false })
-      .limit(20);
+    try {
+      const supabase = createSupabaseClient();
+      
+      const { data, error } = await supabase
+        .from("reviews")
+        .select("*, branches(name)")
+        .eq("college_id", collegeId)
+        .eq("is_approved", true)
+        .order("is_featured", { ascending: false })
+        .order("created_at", { ascending: false })
+        .limit(20);
 
-    if (data && !error) {
-      setReviews(data);
-      calculateStats(data);
+      if (error) {
+        console.error("Error fetching reviews:", error);
+      }
+
+      if (data && !error) {
+        setReviews(data);
+        calculateStats(data);
+      }
+    } catch (err) {
+      console.error("Exception fetching reviews:", err);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   }
 
   function calculateStats(reviewsData: Review[]) {
@@ -93,6 +102,9 @@ export function ReviewsSection({ collegeId, collegeName }: ReviewsSectionProps) 
       </section>
     );
   }
+
+  // Always render the section, even if there's an error
+  console.log("ReviewsSection rendering for:", collegeName, "Reviews count:", reviews.length);
 
   return (
     <section className="bg-white rounded-lg shadow-md p-6">
