@@ -222,7 +222,7 @@ export function CollegeDetail({
               <MediaSection media={media} />
             </FadeInWhenVisible>
 
-            {/* Reviews & Ratings */}
+            {/* Student Reviews & Ratings */}
             <FadeInWhenVisible delay={0.1}>
               <ReviewsSection collegeId={college.id} collegeName={college.name} />
             </FadeInWhenVisible>
