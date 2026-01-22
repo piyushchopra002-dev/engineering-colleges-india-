@@ -1,5 +1,7 @@
 import { MetadataRoute } from "next";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { faqCategories } from "@/lib/faq-data";
+import { getAllBlogs, blogCategories } from "@/lib/blog-data";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
@@ -148,6 +150,50 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.7,
+    });
+  });
+
+  // Add FAQ pages
+  sitemap.push({
+    url: `${baseUrl}/faq`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.8,
+  });
+
+  faqCategories.forEach((category) => {
+    sitemap.push({
+      url: `${baseUrl}/faq/${category.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.7,
+    });
+  });
+
+  // Add blog pages
+  sitemap.push({
+    url: `${baseUrl}/blog`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.8,
+  });
+
+  const blogs = getAllBlogs();
+  blogs.forEach((post) => {
+    sitemap.push({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.publishedDate),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    });
+  });
+
+  blogCategories.forEach((category) => {
+    sitemap.push({
+      url: `${baseUrl}/blog/category/${category.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.6,
     });
   });
 

@@ -13,6 +13,7 @@ import { AchievementsSection } from "./AchievementsSection";
 import { MediaSection } from "./MediaSection";
 import { EventsSection } from "./EventsSection";
 import { CityLifeSection } from "./CityLifeSection";
+import { ReviewsSection } from "../reviews/ReviewsSection";
 import { CollegeImage } from "@/components/colleges/CollegeImage";
 import { RelatedColleges } from "./RelatedColleges";
 import { VerifiedBadge, DataSourceBadge, LastUpdatedBadge } from "@/components/ui/TrustBadges";
@@ -219,6 +220,11 @@ export function CollegeDetail({
             {/* Media */}
             <FadeInWhenVisible delay={0.1}>
               <MediaSection media={media} />
+            </FadeInWhenVisible>
+
+            {/* Reviews & Ratings */}
+            <FadeInWhenVisible delay={0.1}>
+              <ReviewsSection collegeId={college.id} collegeName={college.name} />
             </FadeInWhenVisible>
 
             {/* City Life */}

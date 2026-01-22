@@ -277,3 +277,46 @@ export interface NewsArticle {
   proof_type?: string;
   image_url?: string;
 }
+
+export interface Review {
+  id: string;
+  college_id: string;
+  user_name: string;
+  user_email?: string;
+  user_type: "current_student" | "alumni" | "parent" | "visitor";
+  graduation_year?: number;
+  branch_id?: string;
+  
+  // Ratings
+  overall_rating: number;
+  infrastructure_rating?: number;
+  academics_rating?: number;
+  placements_rating?: number;
+  faculty_rating?: number;
+  campus_life_rating?: number;
+  
+  // Content
+  review_title: string;
+  review_text: string;
+  pros?: string;
+  cons?: string;
+  
+  // Verification
+  is_verified: boolean;
+  verification_proof?: string;
+  
+  // Moderation
+  is_approved: boolean;
+  is_featured: boolean;
+  
+  // Engagement
+  helpful_count: number;
+  not_helpful_count: number;
+  
+  // Timestamps
+  created_at: string;
+  updated_at: string;
+  
+  // Relations
+  branches?: Branch;
+}
